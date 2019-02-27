@@ -1,0 +1,20 @@
+{
+  "name": "test-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "docker:build": "docker build -t node-web-app .",
+    "docker:save": "docker save -o node-web-app.tar node-web-app:latest",
+    "docker:remove": "docker image rm node-web-app",
+    "docker:load": "docker load -i node-web-app.tar",
+    "docker:public": "docker push tanmv/hello-world"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
