@@ -5,15 +5,29 @@
 */
 
 const express = require('express');
+const os = require('os');
+const ifaces = os.networkInterfaces();
 
 // Constants
-const PORT = 8080;
+const PORT = 80;
 const HOST = '0.0.0.0';
+
+const listIp = [];
+
+Object.keys(ifaces).forEach(ifname => {
+  ifaces[ifname].forEach(iface => {
+    if ('IPv4' !== iface.family || iface.internal !== false) {
+      return;
+    }
+
+    listIp.push(`${ifname}: ${iface.address}`);
+  });
+});
 
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello world\n');
+  res.send(`Hello world<br/>IP Server:<br/> ${listIp.join(', ')}`);
 });
 
 app.listen(PORT, HOST);
