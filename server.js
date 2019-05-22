@@ -30,5 +30,9 @@ app.get('/', (req, res) => {
   res.send(`Hello world<br/>IP Server:<br/> ${listIp.join(', ')}`);
 });
 
+app.get('/env', (req, res) => {
+  res.json(process.env);
+});
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
