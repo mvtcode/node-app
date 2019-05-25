@@ -1,18 +1,18 @@
 {
-  "name": "test-app",
+  "name": "node-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "docker:build": "docker build -t node-web-app .",
-    "docker:save": "docker save -o node-web-app.tar node-web-app:latest",
-    "docker:remove": "docker image rm node-web-app",
-    "docker:load": "docker load -i node-web-app.tar",
-    "docker:public": "docker push tanmv/hello-world"
+    "start": "node src/index.js",
+    "docker:build": "docker build -t tanmv/node-app-test .",
+    "docker:save": "docker save -o node-app-test.tar tanmv/node-app-test:latest",
+    "docker:remove": "docker image rm tanmv/node-app-test",
+    "docker:load": "docker load -i node-app-test.tar",
+    "docker:public": "docker push tanmv/node-app-test"
   },
   "keywords": [],
-  "author": "",
+  "author": "tanmv",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
